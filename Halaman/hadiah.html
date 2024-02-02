@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Draw</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmgq-xqGZTipZJB87qpLDNgumOQR7ScPXiCA&usqp=CAU');
+            background-size: cover;            
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .lottery-card {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_xbX2lsMmU_cFyEIImmLQlnPrnp6kRx4F1w&usqp=CAU');
+            background-size: cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.5s ease;
+        }
+
+        .button {
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #2d4373;
+        }
+
+        .chance {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        
+        .lottery-card {
+            /* CSS yang sudah ada */
+            transition: transform 0.5s ease;
+        }
+
+        .lottery-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        /* Animasi saat halaman dimuat */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease;
+        }
+
+        /* Popup */
+        .popup-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .popup {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 80%;
+        }
+
+        .popup input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .popup button {
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: #2d4373;
+        }
+        #prizeInfo{
+            color: black;
+        }
+        #prizeInfo, h3 {
+            color: black;
+        }
+        
+       a {
+    color: white;
+    text-decoration: none; /* Menghapus garis bawah dari tautan */
+    
+}
+
+
+    </style>
+</head>
+<body class="fade-in">
+    <!-- iklan -->
+    <script type='text/javascript' src='//pl22365904.toprevenuegate.com/2a/c4/e4/2ac4e4e53c6554eef290e70f20af8641.js'></script>
+    <!-- iklan -->
+    
+        <!-- iklan -->
+    <center>
+    <script type="text/javascript"> 	atOptions = { 		'key' : '0ca3b32f05192ffe796594b104d77879', 		'format' : 'iframe', 		'height' : 250, 		'width' : 300, 		'params' : {} 	}; 	document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/0ca3b32f05192ffe796594b104d77879/invoke.js"></scr' + 'ipt>'); </script>
+    </center>
+     <!-- iklan -->
+    <a href="https://www.toprevenuegate.com/zeehhsnwkj?key=ec108421c3ce55d08b11ac2a96363af9" onclick="return handleClick()"> 
+  <h1>Free Fire</h1>
+
+
+
+
+    
+    <p>Pilih dan dapatkan hadiah menarik!</p>
+     </a>
+    <div class="container">
+        <div class="lottery-card" data-prize="70💎" onclick="revealPrize(this)"></div>
+        <div class="lottery-card" data-prize="10💎" onclick="revealPrize(this)"></div>
+        <div class="lottery-card" data-prize="5💎" onclick="revealPrize(this)"></div>
+       
+        <div class="lottery-card" data-prize="140💎" onclick="revealPrize(this)"></div>
+    </div>
+    
+    <br>
+     <a href="https://www.toprevenuegate.com/zeehhsnwkj?key=ec108421c3ce55d08b11ac2a96363af9" onclick="return handleClick()"> 
+    <button class="button" id="ambilButton" onclick="showPopup()" style="display: none;">Ambil</button>
+    <div class="chance">Kesempatan: <span id="chance">1</span></div>
+</a>
+
+  <!-- iklan -->
+    <center>
+    <script type="text/javascript"> 	atOptions = { 		'key' : '0ca3b32f05192ffe796594b104d77879', 		'format' : 'iframe', 		'height' : 250, 		'width' : 300, 		'params' : {} 	}; 	document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/0ca3b32f05192ffe796594b104d77879/invoke.js"></scr' + 'ipt>'); </script>
+    </center>
+     <!-- iklan -->
+    <!-- Popup -->
+    <div class="popup-container" id="popupContainer" style="display: none;">
+        <div class="popup">
+            <div id="prizeInfo"></div>
+            <h3>Ketik "lanjut" untuk melanjutkan:</h3>
+            <input type="text" id="confirmation" placeholder="Ketik 'lanjut' untuk melanjutkan">
+            <button onclick="validateConfirmation()">Kirim</button>
+        </div>
+        
+    </div>
+    
+
+  <img src="https://i.ibb.co/q9MPHh7/1706492912932.png" alt="deskripsi-gambar" width="400" height="450" style="position: fixed; bottom: -205px; left: 155px; z-index: 9; pointer-events: none;">
+
+
+
+    <script>
+        var chanceLeft = 1;
+var prizes = ["70💎", "10💎", "5💎", "140💎"]; // Array of possible prizes
+var selectedPrize = '';
+
+// Cek apakah spin sudah dilakukan hari ini
+var lastSpinDate = localStorage.getItem('lastSpinDate');
+var currentDate = new Date().toLocaleDateString();
+if (lastSpinDate === currentDate) {
+    chanceLeft = 0; // Spin sudah dilakukan hari ini, set kesempatan menjadi 0
+}
+updateChanceDisplay();
+
+function updateChanceDisplay() {
+    document.getElementById("chance").textContent = chanceLeft;
+}
+
+function revealPrize(card) {
+    if (chanceLeft > 0 && !card.classList.contains("flipped")) {
+        card.classList.add("flipped");
+        setTimeout(function() {
+            var randomIndex = Math.floor(Math.random() * prizes.length); // Generate random index
+            selectedPrize = prizes[randomIndex]; // Select prize based on random index
+            card.innerHTML = selectedPrize;
+            card.classList.remove("flipped");
+            chanceLeft--;
+            updateChanceDisplay();
+            // Tampilkan informasi hadiah di pop-up
+            document.getElementById("prizeInfo").textContent = "Anda mendapatkan hadiah: " + selectedPrize;
+            // Tampilkan tombol "Ambil" jika ada hadiah yang dipilih
+            document.getElementById("ambilButton").style.display = "block";
+            // Simpan tanggal spin terakhir ke local storage
+            localStorage.setItem('lastSpinDate', currentDate);
+        }, 500);
+    }
+}
+
+function showPopup() {
+    document.getElementById("popupContainer").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popupContainer").style.display = "none";
+}
+
+function validateConfirmation() {
+    var confirmationInput = document.getElementById("confirmation").value.toLowerCase();
+    if (confirmationInput === "lanjut") {
+        claimPrize();
+    } else {
+        alert("Konfirmasi tidak valid. Silakan ketik 'lanjut' untuk melanjutkan.");
+    }
+}
+
+function claimPrize() {
+    if (selectedPrize !== '') {
+        alert("Selamat! Anda mendapatkan hadiah: " + selectedPrize);
+        // Buka game Free Fire langsung jika sudah terinstal
+        window.location.href = "freefire://"; // URL scheme untuk membuka Free Fire
+    } else {
+        alert("Anda belum memilih hadiah. Silakan pilih hadiah terlebih dahulu.");
+    }
+    closePopup();
+}
+
+    </script>
+</body>
+</html>

